@@ -21,7 +21,7 @@ RUN go build -o mailservice
 
 
 # Expose the necessary port
-EXPOSE 8093
+EXPOSE 8095
 
 # Command to run the service
 CMD ["./mailservice"]

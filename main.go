@@ -39,5 +39,5 @@ func main() {
 		AllowHeaders: []string{"Origin", "Content-Type", "Accept", "Authorization"},
 	}))
 	e.POST("/graphql", handlers.Handler)
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":8095"))
 }

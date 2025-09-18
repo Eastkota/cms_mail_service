@@ -3,11 +3,22 @@ package helpers
 import (
 	"fmt"
 	"strings"
+
 	"github.com/graphql-go/graphql"
 )
 
 func ConvertSchemaToString(schema *graphql.Schema) string {
 	var sb strings.Builder
+
+	// List of built-in GraphQL scalars
+	builtIns := map[string]bool{
+		"String":  true,
+		"Int":     true,
+		"Float":   true,
+		"Boolean": true,
+		"ID":      true,
+	}
+
 	for typeName, graphqlType := range schema.TypeMap() {
 		// Ignore internal GraphQL types
 		if strings.HasPrefix(typeName, "__") {
@@ -80,6 +91,12 @@ func ConvertSchemaToString(schema *graphql.Schema) string {
 				sb.WriteString(ut.String())
 			}
 			sb.WriteString("\n\n")
+
+		case *graphql.Scalar:
+			// Only write custom scalars
+			if !builtIns[typeName] {
+				sb.WriteString(fmt.Sprintf("scalar %s\n\n", typeName))
+			}
 		}
 	}
 
