@@ -21,7 +21,7 @@ func NewQueryType(resolver *resolvers.MailResolver) *graphql.Object {
                         return nil, err
                     }
                     serviceInfo := model.Service{
-                        Name:    "MailService",
+                        Name:    "mailservice",
                         Version: "1.0.0",
                         Schema:  helpers.ConvertSchemaToString(schema),
                     }
