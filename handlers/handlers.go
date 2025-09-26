@@ -2,7 +2,6 @@ package handlers
 
 import (
 	schema "cms_mail_service/graph"
-	"fmt"
 
 	"context"
 	"encoding/json"
@@ -36,7 +35,6 @@ func Handler(ctx echo.Context) error {
 	}
 
 	result := executeQuery(ctx.Request().Context(), query, variables)
-	fmt.Println(result)
 
 	if result.HasErrors() {
 		return echo.NewHTTPError(http.StatusInternalServerError, result.Errors)

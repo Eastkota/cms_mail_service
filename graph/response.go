@@ -9,3 +9,10 @@ var EmailLogResponse = graphql.NewObject(graphql.ObjectConfig{
 		"error": &graphql.Field{Type: MailError},
 	},
 })
+var GenericMailResponse = graphql.NewObject(graphql.ObjectConfig{
+	Name: "GenericMailResponse",
+	Fields: graphql.Fields{
+		"data":  &graphql.Field{Type: GenericMailSuccessData},
+		"error": &graphql.Field{Type: MailError},
+	},
+})

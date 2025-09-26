@@ -23,3 +23,10 @@ var MultipleMailData = graphql.NewObject(graphql.ObjectConfig{
 		"email_log": &graphql.Field{Type: graphql.NewList(EmailLogType)},
 	},
 })
+
+var GenericMailSuccessData = graphql.NewObject(graphql.ObjectConfig{
+	Name: "GenericMailSuccessData",
+	Fields: graphql.Fields{
+		"message": &graphql.Field{Type: graphql.String},
+	},
+})
