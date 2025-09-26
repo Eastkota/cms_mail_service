@@ -1,11 +1,16 @@
 package model
 
-type EmailLogResponse struct {
+type MultipleMailData struct{
+	EmailLog []EmailLog `json:"email_log"`
+	Error    *MailError `json:"error"`
+}
+
+type GenericMailResponse struct {
 	Data  interface{}
 	Error *MailError
 }
 
-type MultipleMailData struct{
-	EmailLog []EmailLog `json:"email_log"`
-	Error    *MailError `json:"error"`
+type GenericMailSuccessData struct {
+	Message string `json:"message"`
+	Code    string `json:"code"`
 }
