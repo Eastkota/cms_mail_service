@@ -20,3 +20,8 @@ type EmailLog struct {
 func (EmailLog) TableName() string {
     return "email_log.email_logs"
 }
+
+type MailData struct {
+	Title       string `json:"title"`
+	Content     string `jason:"content"`
+}
