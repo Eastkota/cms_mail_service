@@ -20,4 +20,10 @@ func (r *EmailLogRepository) FetchEmailLog() ([]model.EmailLog, error) {
         return nil, err
     }
     return emails, nil
+
+
+
+
+
+    
 }
