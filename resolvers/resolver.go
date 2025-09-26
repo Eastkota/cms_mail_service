@@ -8,4 +8,5 @@ import (
 
 type Resolver interface {
 	FetchEmailLog(p graphql.ResolveParams) ([]model.GenericMailResponse, error)
+	SendMail(p graphql.ResolveParams) *model.GenericMailResponse
 }

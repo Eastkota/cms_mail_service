@@ -83,7 +83,7 @@ func (r *EmailLogRepository) SendMail(mailData model.MailInput) error {
 		// Update email log with failed status
 		db.Model(&emailLog).Updates(map[string]interface{}{
 			"status":     "failed",
-			"error_msg":  err.Error(),
+			"error_message":  err.Error(),
 			"updated_at": time.Now(),
 		})
 		return fmt.Errorf("failed to send email: %v", err)
