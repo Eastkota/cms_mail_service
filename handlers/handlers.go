@@ -2,11 +2,11 @@ package handlers
 
 import (
 	schema "cms_mail_service/graph"
+	"fmt"
 
 	"context"
 	"encoding/json"
 	"net/http"
-	"log"
 
 	"github.com/graphql-go/graphql"
 	"github.com/labstack/echo/v4"
@@ -36,9 +36,7 @@ func Handler(ctx echo.Context) error {
 	}
 
 	result := executeQuery(ctx.Request().Context(), query, variables)
-	if result == nil {
-        log.Println("GraphQL execution failed: result is nil.")
-    }
+	fmt.Println(result)
 
 	if result.HasErrors() {
 		return echo.NewHTTPError(http.StatusInternalServerError, result.Errors)
