@@ -18,7 +18,7 @@ func NewMutationType(resolver *resolvers.MailResolver) *graphql.Object {
 					},
 				},
 				Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-					return resolver.SendMail(p), nil
+					return AuthMiddleware(resolver.SendMail)(p), nil
 				},
 			},
 		},

@@ -35,7 +35,9 @@ func Handler(ctx echo.Context) error {
 		variables = make(map[string]interface{})
 	}
 
-	result := executeQuery(ctx.Request().Context(), query, variables)
+	reqCtx := context.WithValue(ctx.Request().Context(), "http_request", ctx.Request())
+
+	result := executeQuery(reqCtx, query, variables)
 	if result == nil {
 		log.Println("GraphQL execution failed: result is nil.")
 	}

@@ -18,6 +18,8 @@ func MailHost()			string {return os.Getenv("MailHost")}
 func MailEncryption() 	string {return os.Getenv("MailEncryption")}
 func MailFromAddress()	string {return os.Getenv("MailFromAddress")}
 func MailFromNAme()		string {return os.Getenv("MailFromName")}
+
+func AuthServiceApi() string { return os.Getenv("AUTH_SERVICE_API") }
   
 func MailPort() int {
 	portStr := os.Getenv("MailPort")
