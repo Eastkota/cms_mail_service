@@ -21,3 +21,4 @@ func ValidateEmail(inputData model.MailInput) error {
 
 	return nil
 }
+

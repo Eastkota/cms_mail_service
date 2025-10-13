@@ -1,8 +1,8 @@
 package helpers
 
 import (
-	"cms_mail_service/model"
 	"html/template"
+	"cms_mail_service/model"
 
 	"bytes"
 	"log"

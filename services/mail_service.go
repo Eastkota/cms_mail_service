@@ -20,3 +20,7 @@ func (s *EmailLogService) FetchEmailLog() ([]model.EmailLog, error) {
     }
     return emails, nil
 }
+
+func (s *EmailLogService) SendMail(mailData model.MailInput) error {
+	return s.Repository.SendMail(mailData) 
+}
