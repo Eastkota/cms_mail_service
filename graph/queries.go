@@ -31,7 +31,7 @@ func NewQueryType(resolver *resolvers.MailResolver) *graphql.Object {
             "fetchEmailLog": &graphql.Field{
                 Type: EmailLogResponse,
                 Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-                    return AuthMiddleware(resolver.FetchEmailLog)(p), nil
+                    return AuthMiddleware(PermissionMiddleware("list", resolver.FetchEmailLog))(p), nil
                 },
             },
         },

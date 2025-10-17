@@ -44,3 +44,43 @@ func AuthMiddleware(next func(p graphql.ResolveParams) *model.GenericMailRespons
         return next(p)
     }
 }
+
+func PermissionMiddleware(actionName string, next func(p graphql.ResolveParams) *model.GenericMailResponse) func(p graphql.ResolveParams) *model.GenericMailResponse {
+    return func(p graphql.ResolveParams) *model.GenericMailResponse {
+        ctx := p.Context
+        user := ctx.Value("user") // User data should be decoded from JWT and put here
+        if user == nil {
+            return helpers.FormatError(fmt.Errorf("UnAuthorized"))
+        }
+
+        userData := user.(*model.User)
+        hasPermission := false
+
+        for _, role := range userData.Roles {
+            if role.Name == "super admin" {
+                hasPermission = true
+                break
+            }
+        }
+
+        if !hasPermission {
+            for _, role := range userData.Roles {
+                for _, permission := range role.Permissions {
+                    if permission.Action.Action == actionName {
+                        hasPermission = true
+                        break 
+                    }
+                }
+                if hasPermission {
+                    break
+                }
+            }
+        }
+
+        if !hasPermission {
+            return helpers.FormatError(fmt.Errorf("UnAuthorized"))
+        }
+
+        return next(p)
+    }
+}
