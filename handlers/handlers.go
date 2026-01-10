@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
+	"log"
 
 	"github.com/graphql-go/graphql"
 	"github.com/labstack/echo/v4"
