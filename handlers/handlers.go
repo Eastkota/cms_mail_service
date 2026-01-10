@@ -5,7 +5,6 @@ import (
 
 	"context"
 	"encoding/json"
-	"log"
 	"net/http"
 
 	"github.com/graphql-go/graphql"
